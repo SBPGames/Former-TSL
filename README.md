@@ -1,5 +1,5 @@
 ![Project logo](Content/Logo/TheSevenLives_Large_logo.png?raw=true)
-# Title [![License: GPL v3](https://img.shields.io/badge/License-GPL_v3-orange.svg)](COPYING)
+# The Seven Lives [![License: GPL v3](https://img.shields.io/badge/License-GPL_v3-orange.svg)](COPYING)
 Soon.
 
 ## Screenshots

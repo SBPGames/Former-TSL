@@ -30,3 +30,7 @@ class TheSevenLives:
             delta_time=self.clock.tick()
             self.update(delta_time)
             pygame.display.update()
+    def getwidth(self):
+        return pygame.display.Info().current_w
+    def getheight(self):
+        return pygame.display.Info().current_h

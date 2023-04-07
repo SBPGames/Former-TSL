@@ -3,10 +3,6 @@ class Component():
     def __init__(self):
         pass
     
-    
-    def is_pushed(): #Florian ?
-        #return True or False
-        pass
         
     def detecter_collision(objet1,objet2,parametres):
         p1 = objet1.position

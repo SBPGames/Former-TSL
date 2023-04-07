@@ -7,4 +7,8 @@ if devlop=="oui":
 else:
     devlop = "jeu"
 
-TheSevenLives("7lives", devlop).run()
+
+jeu=TheSevenLives("7lives", devlop)
+print(jeu.getheight())
+print(jeu.getwidth())
+jeu.run()

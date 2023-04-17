@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+
+from Entity.entity import Entity
+
 class Component():
     
     def __init__(self):

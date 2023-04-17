@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+from Entity.entity import Entity
+
 class Collision(): 
     
     def __init__(self):

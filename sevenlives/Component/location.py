@@ -2,11 +2,11 @@
 
 from Entity.entity import Entity
 
-class Localition():
+class Location():
     
     def __init__(self):
         pass
 
-    def say_location(self):
-        return self.position
+    def location(self):
+        return (self.rect.x, self.rect.y)
 

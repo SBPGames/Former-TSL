@@ -16,5 +16,8 @@ class Squirrel():
     '''
 
     def __init__(self):
-        self.attribute= Entity("Scotty")
+        pass
+
+    def create_scotty(self, x, y, image_scotty):
+        scotty=Entity("Scotty", x, y, image_scotty)
         

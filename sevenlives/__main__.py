@@ -1,14 +1,24 @@
-# -*- coding: utf-8 -*-
-from sevenlives.game import TheSevenLives
+import sys, getopt
+from sevenlives import *
 
-devlop=input("Voulez vous activer le mode dévelopeur ? réponse possible: 'oui' ou 'non' : ")
-if devlop=="oui":
-    devlop = "dev"
-else:
-    devlop = "jeu"
+mode = Mode.PRODUCTION
 
+try:
+    options, args = getopt.getopt(sys.argv[1:], "d", ["mode="])
 
-jeu=TheSevenLives("7lives", devlop)
-print(jeu.getheight())
-print(jeu.getwidth())
-jeu.run()
+    for o, v in options:
+        if o == "--mode":
+            for m in Mode.getValues():
+                if v in m.getNames():
+                    mode = m
+                    break
+            else:
+                raise getopt.GetoptError(f"Unknown \"{v}\" as a {o} value.", o)
+        elif o == "-d":
+            mode = Mode.DEVELOPMENT
+except getopt.GetoptError as e:
+    if e.opt == "--mode": print(e)
+
+print(f"Launching game in {str(mode.getId()).capitalize()} mode...")
+
+TheSevenLives(mode).run()

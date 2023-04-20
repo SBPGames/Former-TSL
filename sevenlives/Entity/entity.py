@@ -2,14 +2,20 @@
 
 import pygame
 
+from component import move_right
+from Component.transform import move_left
+from Component.transform import jump
+
 class Entity():
     ''' Entité est le père de tous les objets'''
     
     def __init__(self, name, x, y, file_name):
         self.lst_component=[]
         self.name=name
-        self.velocity=10
-        self.image=pygame.image.load(file_name)
+        self.velocity=5
+        self.all_images={"first_image":file_name, "move_right":None, "move_left":None, "jump":None, "burnt": None, "other_option":None}
+        self.image= pygame.image.load(file_name) #.convert_alpha()
+        # remettre image à bonnes dimensions : self.image = pygame.transform.scale(self.image, (32, 32))
         self.rect= self.image.get_rect()
         self.rect.x=x
         self.rect.y=y
@@ -24,42 +30,10 @@ class Entity():
         self.lst_component.append(element)
         
     def update_component(self): # appelle les méthodes de Stinie + les miennes
-        #self.deplacement()
+        '''Vérifie pour chaque component qu'il soit dans la liste, et si oui il est exécuté'''
         pass
+                
         
     def remove_component(self, element):
-        self.lst_component.remove(element) # à modifier
-
-    # def can_do(self, component):
-    #     if self.can_do.component==True # si le composant est dans liste :
-    #         return False
-    #     return True
-        
-#class Hazelnut():
-#    def __init__(self):
-#        self.attribute= Entity(None)
-#        
-#class Carrot():
-#    def __init__(self):
-#        self.attribute= Entity(None)
-        
-# si besoin regarder pygame.org
-
-# if __name__ == "__main__":
-#     import sys
-
-#     pygame.init()
-#     surface = pygame.display.set_mode((960, 540))
-#     pygame.display.set_caption("Test window")
-
-#     # Votre initialization de vos objets
-
-#     while True:
-#         for event in pygame.event.get():
-#             if pygame.QUIT == event.type:
-#                 pygame.quit()
-#                 sys.exit()
-        
-#         # Vos fonctions/méthodes à appeller à chaque frame
-        
-#         pygame.display.update()
+        if self.has_component(element):
+            self.lst_component.remove(element) # à modifier

@@ -1,12 +1,13 @@
 import pygame
+from sevenlives.utils import ScrW, ScrH
 from sevenlives.level import Level
-from sevenlives.interface import *
+from sevenlives.interface import Button
 
 class MainLevel:
     def __init__(self):
         self.__parent = Level("menu")
 
-        origin = pygame.Vector2(pygame.display.Info().current_w*2/3, pygame.display.Info().current_h/2)
+        origin = pygame.Vector2(ScrW()*2/3, ScrH()/2)
         self._buttons: list[Button] = [
             Button("start", origin, self.startClicked),
             Button("continue", origin, self.continueClicked),
@@ -24,7 +25,7 @@ class MainLevel:
             pygame.Color(235, 235, 235)
         )
         self._cdtRect = self._cdtText.get_rect()
-        self._cdtRect.bottomleft = pygame.Vector2(10, pygame.display.Info().current_h - 10)
+        self._cdtRect.bottomleft = pygame.Vector2(10, ScrH() - 10)
 
     def update(self, deltatime):
         self.__parent.update(deltatime)

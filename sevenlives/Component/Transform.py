@@ -12,6 +12,9 @@ class Transform():
     def __init__(self):
         pass
 
+    def set_entity(self, entity):
+        self.entity=entity
+
     def move_right(self):
         self.rect.x += self.velocity # mettre des conditions pour que l'entité reste visible sur l'écran ?
 

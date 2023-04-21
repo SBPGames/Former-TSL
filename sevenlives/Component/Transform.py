@@ -23,10 +23,10 @@ class Transform():
 
     def fall(self, surface):
         '''Cette méthode est utilisée spour les arbres, les branches, les noisettes ou l'écureuil.'''
-        while self.rect.y>1000 or not self.collision():
-            self.image=pygame.transform.rotozoom(surface, self.velocity, 1)
-            self.rect= self.image.get_rect(center=self.rect.center)
-            self.rect.y+=self.velocity
+        # while self.rect.y>1000 or not self.collision():
+        # self.image=pygame.transform.rotozoom(surface, self.velocity, 1)
+        # self.rect= self.image.get_rect(center=self.rect.center)
+        self.rect.y+=self.velocity
 
     def modify_velocity(self, new_velocity):
         self.velocity=new_velocity

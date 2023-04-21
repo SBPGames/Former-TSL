@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pygame
-from Entity.entity import Entity
-from location import Location
+from entity import Entity
 
 class Animate():
     '''Gère les images de chaque entité'''
@@ -15,11 +14,6 @@ class Animate():
         for picture in self.all_images:
             if picture==function and self.all_images[picture]== None:
                 self.all_images[picture]=file_name
-
-    def draw(self, surface=pygame.display.set_mode((960, 540)), position=(0,0)): # surface représente l'écran
-        '''Cette méthode peremet de dessiner l'entité sur l'écran.'''
-        surface.blit(self.image, position)
-
 
     def change_image(self, function):
         '''Cette méthode permet de changer à l'écran l'image d'une entité  en fonction de la fonction de l'image.'''

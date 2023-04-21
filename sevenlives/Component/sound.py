@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from Entity.entity import Entity
+import pygame
+from entity import Entity
 
 class Sound():
 
     ''' défini les différents sons de chaque personnages'''
 
     def __init__(self):
-        pass
+        self.sounds={} # pygame.mixer.Sound("file_name")
+
+    def play(self, sound_name):
+        self.sounds[sound_name].play()

@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import pygame 
 from entity import Entity
 
 class Tree():
 
-    def __init__(self):
-        pass
+    '''
+    Tree est un arbre.
+    Il peut tomber / se brûler'''
+
+    def __init__(self, position):
+        self.parent=Entity("tree", position)

@@ -15,9 +15,6 @@ class Squirrel():
     - se brûler
     '''
 
-    def __init__(self):
-        pass
-
-    def create_scotty(self, x, y, image_scotty):
-        scotty=Entity("Scotty", x, y, image_scotty)
+    def __init__(self, position):
+        self.parent=Entity("Scotty", position)
         

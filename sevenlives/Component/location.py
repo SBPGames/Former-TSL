@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from Entity.entity import Entity
+import pygame
+from entity import Entity
 
 class Location():
     

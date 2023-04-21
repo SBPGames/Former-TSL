@@ -26,15 +26,18 @@ class Button:
         self._statusImages = {}
         for status in UIStatus.getValues():
             if os.path.exists(self._getButtonImgPath(status)):
-                self._statusImages[status.getId()] = pygame.image.load(self._getButtonImgPath(status))
+                self._statusImages[status.getId()] = pygame.transform.scale_by(
+                    pygame.image.load(self._getButtonImgPath(status)).convert_alpha(), 3
+                )
 
-            if status == UIStatus.IDLE:
-                size = self._statusImages["idle"].get_rect().size
+                if status == UIStatus.IDLE:
+                    size = self._statusImages["idle"].get_rect().size
 
         self._rect = pygame.Rect(pos.x, pos.y, size[0], size[1])
-        self._surface = pygame.Surface(self._rect.size)
+        self._surface = pygame.Surface(self._rect.size).convert_alpha()
+        self._surface.fill(pygame.Color(0, 0, 0, 0))
 
-        if self._statusImages["idle"] == None:
+        if "idle" not in self._statusImages.keys():
             self._statusImages = {}
 
             self._surface.fill(color)
@@ -57,6 +60,8 @@ class Button:
                 self._callback()
 
             self._status = UIStatus.CLICKED if Mouse.isPressed() else UIStatus.IDLE
+            if Mouse.isPressed():
+                self._surface.set_alpha(255)
         else:
             self._status = UIStatus.IDLE
 

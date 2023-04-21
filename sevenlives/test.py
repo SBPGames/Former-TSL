@@ -47,3 +47,19 @@ while run :
 #         # Vos fonctions/méthodes à appeller à chaque frame
         
 #         pygame.display.update()
+
+# Images/Police d'écritures/Sons : sevenlives/assets
+# Assets niveaux : sevenlives/assets/level/[niveau]/*
+# Assets Entités : sevenlives/assets/entity/[entité]/*
+# Assets UI : sevenlives/assets/UI/*
+
+# def detecter_collision(objet1,objet2,parametres):
+#         p1 = objet1.position
+#         p2 = objet2.position
+#         dx = p2[0]-p1[0]
+#         dy = p2[1]-p1[1]
+#         dz = p2[2]-p1[2]
+#         d = sqrt(dx*dx+dy*dy+dz*dz)
+#         if d>objet1.rayon+objet2.rayon:
+#             return -1
+#         return 0

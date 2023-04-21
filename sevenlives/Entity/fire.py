@@ -5,8 +5,8 @@ from entity import Entity
 
 class Fire():
 
-    def __init__(self):
-        pass
+    '''Fire est du feu.
+    La seul fonction du feu est de brûler les autrs entités.'''
 
-    def create_fire(self, x, y, file_name):
-        fire = Entity('Fire', x, y, file_name)
+    def __init__(self, position):
+        fire = Entity('fire', position)

@@ -9,6 +9,9 @@ class Animate():
     def __init__(self):
         pass
 
+    def set_entity(self, entity):
+        self.entity=entity
+
     def add_image(self, function, file_name):
         '''Cette méthode peremet d'ajouter des images à la liste des images en fonction de la fonction de l'image.'''
         for picture in self.all_images:

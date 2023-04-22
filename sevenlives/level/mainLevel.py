@@ -15,7 +15,7 @@ class MainLevel:
         ]
 
         space = 40
-        origin = origin - pygame.Vector2(0, (sum([button._rect.height + space for button in self._buttons]) - space)/2)
+        origin = origin - pygame.Vector2(0, self._buttons[0]._rect.h)
         for (i, button) in enumerate(self._buttons):
             button._rect.topleft = self._buttons[i - 1]._rect.bottomleft + pygame.Vector2(0, space) if i > 0 else origin
 
@@ -43,8 +43,8 @@ class MainLevel:
 
     # Buttons actions
     def startClicked(self):
-        print("Started !")
+        pass
     def continueClicked(self):
-        print("Continued !")
+        pass
     def quitClicked(self):
         pygame.event.post(pygame.event.Event(pygame.QUIT))

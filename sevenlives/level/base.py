@@ -2,8 +2,7 @@
 Les assets de ce package se situent dans le dossier "assets/level/{level._id}".
 """
 import os, pygame
-
-LEVELS_ASSETS_PATH = "sevenlives/assets/level"
+from sevenlives.utils import getAssetFolder
 
 class Level:
     def __init__(self, id: str, backgroundColor: pygame.Color = pygame.Color(0, 0, 0)):
@@ -23,8 +22,9 @@ class Level:
 
     # Getters
     def getID(self) -> str: return self.id
+    def getPath(self) -> str: return getAssetFolder(__package__.split(".")[-1], self._id)
     def getBackgroundPath(self, number: int = None) -> str:
-        return f"{LEVELS_ASSETS_PATH}/{self._id}/{'background' if number == None else number}.png"
+        return os.path.join(self.getPath(), f"{'background' if number == None else number}.png")
 
     # Functions
     def update(self, deltatime):

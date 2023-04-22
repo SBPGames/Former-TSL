@@ -7,13 +7,16 @@ __author__ = "Xibitol"
 import os, pygame
 
 PROJECT_ROOT = "sevenlives"
+PROJECT_ASSETS_FOLDER = "assets"
 
-def getAssetFolder(subpackage: str, *path: tuple[str]):
+def getAssetFolder(subpackage: str, *path: list[str]):
     assert any(
         [subpackage == d for d in filter(lambda f: f != "__pycache__", os.listdir(PROJECT_ROOT))]
     ), "You have to give a real subpackage name."
 
-    return os.path.join(PROJECT_ROOT, *filter(lambda p: p != None and len(p) > 0, [subpackage, *path]))
+    return os.path.join(PROJECT_ROOT, PROJECT_ASSETS_FOLDER,
+        *filter(lambda v: v != None and len(v) > 0, [subpackage, *path])
+    )
 
 def ScrW() -> int:
     return pygame.display.Info().current_w

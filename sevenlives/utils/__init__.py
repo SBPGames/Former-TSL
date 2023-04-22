@@ -8,13 +8,12 @@ import os, pygame
 
 PROJECT_ROOT = "sevenlives"
 
-def getAssetFolder(subpackage: str, element: str = None):
+def getAssetFolder(subpackage: str, *path: tuple[str]):
     assert any(
         [subpackage == d for d in filter(lambda f: f != "__pycache__", os.listdir(PROJECT_ROOT))]
     ), "You have to give a real subpackage name."
 
-    spRoot = os.path.join(PROJECT_ROOT, subpackage)
-    return os.path.join(spRoot, element) if element != None else spRoot
+    return os.path.join(PROJECT_ROOT, *filter(lambda p: p != None and len(p) > 0, [subpackage, *path]))
 
 def ScrW() -> int:
     return pygame.display.Info().current_w

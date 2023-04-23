@@ -3,12 +3,12 @@
 import pygame
 
 class Entity():
+    
     ''' Entité est le père de tous les objets'''
     
     def __init__(self, name):
         self.lst_component=[]
         self.name=name
-        self.velocity=5
         #self.all_images={"first_image":"sevenlives/assets/entity/{"name".id}/{idle/run/burn}/{0/1/2}.png", "move_right":None, "move_left":None, "jump":None, "burnt": None, "other_option":None}
         #self.image= pygame.image.load("sevenlives/assets/entity/{entity.id}.png/") #.convert_alpha()
         # remettre image à bonnes dimensions : self.image = pygame.transform.scale(self.image, (32, 32))
@@ -32,7 +32,14 @@ class Entity():
     def update_component(self, dt):
         '''Vérifie pour chaque component qu'il soit dans la liste, et si oui il est exécuté'''
         for component in self.lst_component:
-            component.update(dt)   
+            component.update(dt)
+    # def update_component(self, dt):
+    #     '''Vérifie pour chaque component qu'il soit dans la liste, et si oui il est exécuté'''
+    #     for component in self.lst_component:
+    #         component.update(dt)
+        # '''Vérifie pour chaque component qu'il soit dans la liste, et si oui il est exécuté'''
+        # for component in self.lst_component:
+        #     component.update(dt)   
         
     def remove_component(self, element):
         if self.has_component(element):

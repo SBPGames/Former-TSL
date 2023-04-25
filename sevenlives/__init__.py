@@ -6,8 +6,6 @@ import pygame
 from sevenlives.mode import Mode
 from sevenlives.level import MainLevel
 
-LEVEL_WIDTH = 640
-
 class TheSevenLives:
     def __init__(self, mode: Mode = Mode.PRODUCTION):
         self._mode = mode

@@ -28,9 +28,9 @@ class Button:
         self._statusImages = {}
         for status in UIStatus.getValues():
             if os.path.exists(self._getButtonImgPath(status)):
-                self._statusImages[status.getId()] = pygame.transform.scale_by(
-                    pygame.image.load(self._getButtonImgPath(status)).convert_alpha(), 3
-                )
+                self._statusImages[status.getId()] = pygame.image.load(
+                    self._getButtonImgPath(status)
+                ).convert_alpha()
 
                 if status == UIStatus.IDLE:
                     size = self._statusImages["idle"].get_rect().size

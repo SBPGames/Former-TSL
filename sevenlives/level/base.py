@@ -3,6 +3,7 @@ Les assets de ce package se situent dans le dossier "assets/level/{level._id}".
 """
 import os, pygame
 from sevenlives.utils import getAssetFolder
+# TODO: Add typing for Entity classes
 
 class Level:
     def __init__(self, id: str, backgroundColor: pygame.Color = pygame.Color(0, 0, 0)):
@@ -32,11 +33,9 @@ class Level:
             entity.update_component(deltatime) # TODO: To see
 
     def draw(self, surface: pygame.Surface):
-        screenRect = pygame.Rect(0, 0, surface.get_width(), surface.get_height())
-
         surface.fill(self.backgroundColor)
         for layer in self._backgroundLayers:
-            surface.blit(pygame.transform.scale(layer, screenRect.size), screenRect)
+            surface.blit(layer, surface.get_rect())
 
         for entity in self.entities:
             entity.draw() # TODO: To see

@@ -4,12 +4,14 @@ __authors__ = "Xibitol, Nagisou"
 from typing import Any
 import pygame
 from sevenlives.mode import Mode
-# from sevenlives.level import Level
+from sevenlives.level import MainLevel
+
+LEVEL_WIDTH = 640
 
 class TheSevenLives:
     def __init__(self, mode: Mode = Mode.PRODUCTION):
         self._mode = mode
-        self._level = None
+        self._level = MainLevel()
         pygame.init()
 
         if self._mode == Mode.DEVELOPMENT: 

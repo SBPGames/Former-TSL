@@ -3,6 +3,8 @@ Buttons's image asset is "0.png" in "assets/interface/button/{button._id}".
 """
 import os, pygame
 from typing import Callable
+from sevenlives.settings import LEVEL_WIDTH
+from sevenlives.utils import ScrW
 from sevenlives.interface import Mouse
 from sevenlives.interface.status import UIStatus
 
@@ -71,4 +73,4 @@ class Button:
             if statusID == self._status.getId():
                 surf.blit(img, img.get_rect(center=surf.get_rect().center))
 
-        surface.blit(surf, self._rect)
+        surface.blit(pygame.transform.scale_by(surf, ScrW()/LEVEL_WIDTH), self._rect)

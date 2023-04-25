@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pygame, os
+from sevenlives.utils import getAssetFolder
 from sevenlives.entity.entity import Entity
 from sevenlives.component.transform import Transform
 
@@ -17,15 +18,16 @@ class Animate():
     # sevenlives/assets/entity/{entity.name}/{idle/run/burn}/{0/1/2}.png 
 
     def get_assets_folder(self, anim=None):
-        return f"sevenlives/assets/entity/{self.entity.name}{'/'+anim if anim!=None else ''}"
+        return getAssetFolder("entity", self.entity.name, anim)
 
     def set_entity(self, entity):
         '''Une méthode pour définir l'entité (C'est à cet endroit que l'on charge les images)'''
         self.entity=entity
-        for dossier in filter(lambda f: os.path.isdir(self.get_assets_folder(f)), os.listdir(self.get_assets_folder())):
+        for dossier in filter(lambda d: os.path.isdir(self.get_assets_folder(d)), os.listdir(self.get_assets_folder())):
             self.dico_status[dossier]=[]
             for image in os.listdir(self.get_assets_folder(dossier)):
-                self.dico_status[dossier].append(pygame.image.load(self.get_assets_folder(dossier)+f'/{image}'))
+                if image.endswith(".png"):
+                    self.dico_status[dossier].append(pygame.image.load(os.path.join(self.get_assets_folder(dossier), image)))
 
     def draw(self, surface):
         '''Dessine l'image de l'entité'''

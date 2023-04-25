@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pygame
-from entity import Entity
+from sevenlives.entity.entity import Entity
 
 class Collide(): 
     
@@ -11,5 +11,5 @@ class Collide():
     def set_entity(self, entity):
         self.entity=entity
 
-    def verify_collide(self, entity1, entity2):
+    def collide(self, entity1, entity2):
         return entity1.rect.colliderect(entity2.rect)

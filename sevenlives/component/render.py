@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pygame, os
-from sevenlives.entity.entity import Entity
+from sevenlives.utils import getAssetFolder
 from sevenlives.component.transform import Transform
 from sevenlives.component.animate import Animate
 
@@ -15,7 +15,7 @@ class Render():
         self.entity=entity
 
     def get_image_path(self):
-        return f"sevenlives/assets/entity/{self.entity.name}/unique.png"
+        return getAssetFolder("entity", self.entity.name, "unique.png")
 
     def draw(self, surface): # surface représente l'écran
         '''Cette méthode peremet de dessiner l'entité sur l'écran.'''

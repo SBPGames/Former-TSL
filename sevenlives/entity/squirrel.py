@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import pygame 
 from sevenlives.entity.entity import Entity
 
 class Squirrel():

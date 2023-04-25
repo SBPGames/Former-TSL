@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 class UIStatus:
+    IDLE: UIStatus = None
+    CLICKED: UIStatus = None
     __status = []
 
     def __init__(self, id):

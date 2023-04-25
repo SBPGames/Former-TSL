@@ -7,8 +7,6 @@ from sevenlives.utils import getAssetFolder
 from sevenlives.interface import Mouse
 from sevenlives.interface.status import UIStatus
 
-BUTTONS_ASSETS_PATH = "sevenlives/assets/interface/button"
-
 class Button:
     def __init__(self,
         id: str,

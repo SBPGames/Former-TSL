@@ -1,6 +1,6 @@
 import os, pygame
 from sevenlives.utils import ScrW, ScrH
-from sevenlives.level import Level
+from sevenlives.level.base import Level, LEVEL_WIDTH
 from sevenlives.interface import Button
 
 class MainLevel:
@@ -12,11 +12,14 @@ class MainLevel:
             Button("quit", pygame.Vector2(0, 0), self.quitClicked),
         ]
 
-        space = pygame.Vector2(0, 40)
+        space = pygame.Vector2(0, ScrW()*20/LEVEL_WIDTH)
         origin = pygame.Vector2(ScrW()*2/3, ScrH()/2 - self._buttons[0]._rect.h)
 
         # Logo
-        self._logo = pygame.image.load(os.path.join(self.__parent.getPath(), "logo.png"))
+        self._logo = pygame.transform.scale_by(
+            pygame.image.load(os.path.join(self.__parent.getPath(), "logo.png")),
+            ScrW()/LEVEL_WIDTH
+        )
         self._logoRect = self._logo.get_rect()
         self._logoRect.bottomleft = origin - space - pygame.Vector2((self._logoRect.w - self._buttons[0]._rect.w)/2, 0)
 

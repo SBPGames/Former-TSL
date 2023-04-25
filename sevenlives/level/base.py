@@ -4,6 +4,8 @@ Les assets de ce package se situent dans le dossier "assets/level/{level._id}".
 import os, pygame
 from sevenlives.utils import getAssetFolder
 
+LEVEL_WIDTH = 640
+
 class Level:
     def __init__(self, id: str, backgroundColor: pygame.Color = pygame.Color(0, 0, 0)):
         self._id = id

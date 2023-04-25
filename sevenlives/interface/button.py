@@ -3,8 +3,7 @@ Buttons's image asset is "0.png" in "assets/interface/button/{button._id}".
 """
 import os, pygame
 from typing import Callable
-from sevenlives.settings import LEVEL_WIDTH
-from sevenlives.utils import ScrW
+from sevenlives.utils import getAssetFolder
 from sevenlives.interface import Mouse
 from sevenlives.interface.status import UIStatus
 
@@ -27,10 +26,8 @@ class Button:
 
         self._statusImages = {}
         for status in UIStatus.getValues():
-            if os.path.exists(self._getButtonImgPath(status)):
-                self._statusImages[status.getId()] = pygame.image.load(
-                    self._getButtonImgPath(status)
-                ).convert_alpha()
+            if os.path.exists(self.getStatusPath(status)):
+                self._statusImages[status.getId()] = pygame.image.load(self.getStatusPath(status)).convert_alpha()
 
                 if status == UIStatus.IDLE:
                     size = self._statusImages["idle"].get_rect().size
@@ -49,8 +46,10 @@ class Button:
 
     def getStatus(self) -> UIStatus:
         return self._status
-    def _getButtonImgPath(self, forceStatus: UIStatus = None) -> str:
-        return f"{BUTTONS_ASSETS_PATH}/{self._id}/{forceStatus.getId() if forceStatus != None else self.getStatus().getId()}.png"
+    def getStatusPath(self, forceStatus: UIStatus = None) -> str:
+        return getAssetFolder("interface", "button", self._id,
+            f"{forceStatus.getId() if forceStatus != None else self.getStatus().getId()}.png"
+        )
 
     def update(self):
         self._surface.set_alpha(255)
@@ -58,12 +57,10 @@ class Button:
         if self._rect.collidepoint(*Mouse.getPos()):
             self._surface.set_alpha(127)
 
-            if Mouse.isReleased() and self._rect.collidepoint(*Mouse.getPressedPos()):
-                self._callback()
+            if Mouse.isReleased() and self._rect.collidepoint(*Mouse.getPressedPos()): self._callback()
 
             self._status = UIStatus.CLICKED if Mouse.isPressed() else UIStatus.IDLE
-            if Mouse.isPressed():
-                self._surface.set_alpha(255)
+            if Mouse.isPressed(): self._surface.set_alpha(255)
         else:
             self._status = UIStatus.IDLE
 
@@ -71,6 +68,7 @@ class Button:
         surf = self._surface.copy()
         for statusID, img in self._statusImages.items():
             if statusID == self._status.getId():
+                surf.fill(pygame.Color(0, 0, 0, 0))
                 surf.blit(img, img.get_rect(center=surf.get_rect().center))
 
-        surface.blit(pygame.transform.scale_by(surf, ScrW()/LEVEL_WIDTH), self._rect)
+        surface.blit(surf, self._rect)

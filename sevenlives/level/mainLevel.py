@@ -1,6 +1,6 @@
 import os, pygame
+from sevenlives.settings import LEVEL_WIDTH
 from sevenlives.utils import ScrW, ScrH
-from sevenlives import LEVEL_WIDTH
 from sevenlives.level.base import Level
 from sevenlives.interface import Button
 

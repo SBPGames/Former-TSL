@@ -1,5 +1,4 @@
 import os, pygame
-from sevenlives.settings import LEVEL_WIDTH
 from sevenlives.utils import ScrW, ScrH
 from sevenlives.level.base import Level
 from sevenlives.interface import Button
@@ -13,16 +12,14 @@ class MainLevel:
             Button("quit", pygame.Vector2(0, 0), self.quitClicked),
         ]
 
-        space = pygame.Vector2(0, ScrW()*20/LEVEL_WIDTH)
+        space = pygame.Vector2(0, 20)
         origin = pygame.Vector2(ScrW()*2/3, ScrH()/2 - self._buttons[0]._rect.h)
 
         # Logo
-        self._logo = pygame.transform.scale_by(
-            pygame.image.load(os.path.join(self.__parent.getPath(), "logo.png")),
-            ScrW()/LEVEL_WIDTH
+        self._logo = pygame.image.load(os.path.join(self.__parent.getPath(), "logo.png"))
+        self._logoRect = self._logo.get_rect(
+            bottomleft = origin - space - pygame.Vector2((self._logo.get_rect().w - self._buttons[0]._rect.w)/2, 0)
         )
-        self._logoRect = self._logo.get_rect()
-        self._logoRect.bottomleft = origin - space - pygame.Vector2((self._logoRect.w - self._buttons[0]._rect.w)/2, 0)
 
         # Buttons
         for (i, button) in enumerate(self._buttons):
@@ -34,8 +31,7 @@ class MainLevel:
             True,
             pygame.Color(235, 235, 235)
         )
-        self._cdtRect = self._cdtText.get_rect()
-        self._cdtRect.bottomleft = pygame.Vector2(10, ScrH() - 10)
+        self._cdtRect = self._cdtText.get_rect(bottomleft = pygame.Vector2(10, ScrH() - 10))
 
     def update(self, deltatime):
         self.__parent.update(deltatime)
@@ -49,8 +45,8 @@ class MainLevel:
         for button in self._buttons:
             button.draw(surface)
 
-        surface.blit(self._cdtText, self._cdtRect)
         surface.blit(self._logo, self._logoRect)
+        surface.blit(self._cdtText, self._cdtRect)
 
     # Buttons actions
     def startClicked(self):

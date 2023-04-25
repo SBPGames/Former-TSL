@@ -1,6 +1,3 @@
-__all__ = ["TheSevenLives", "Mode"]
-__authors__ = "Xibitol, Nagisou"
-
 from typing import Any
 import pygame
 from sevenlives.mode import Mode

@@ -1,5 +1,6 @@
 import sys, getopt
-from sevenlives import *
+from sevenlives.game import TheSevenLives
+from sevenlives.mode import Mode
 
 mode = Mode.PRODUCTION
 

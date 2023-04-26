@@ -22,6 +22,7 @@ class Button:
         self._status: UIStatus = UIStatus.IDLE
         self._callback = callback
 
+        # Surface
         self._statusImages = {}
         for status in UIStatus.getValues():
             if os.path.exists(self.getStatusPath(status)):
@@ -42,6 +43,9 @@ class Button:
             textSurf = font.render(text if text != None else self._id.capitalize(), False, textColor)
             self._surface.blit(textSurf, textSurf.get_rect(center=self._surface.get_rect().center))
 
+        # Sound
+        self._clickSound = pygame.mixer.Sound(getAssetFolder("interface", "button", "click.wav"))
+
     def getStatus(self) -> UIStatus:
         return self._status
     def getStatusPath(self, forceStatus: UIStatus = None) -> str:
@@ -55,7 +59,9 @@ class Button:
         if self._rect.collidepoint(*Mouse.getPos()):
             self._surface.set_alpha(127)
 
-            if Mouse.isReleased() and self._rect.collidepoint(*Mouse.getPressedPos()): self._callback()
+            if Mouse.isReleased() and self._rect.collidepoint(*Mouse.getPressedPos()):
+                self._callback()
+                self._clickSound.play()
 
             self._status = UIStatus.CLICKED if Mouse.isPressed() else UIStatus.IDLE
             if Mouse.isPressed(): self._surface.set_alpha(255)

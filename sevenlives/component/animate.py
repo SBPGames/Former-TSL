@@ -15,8 +15,6 @@ class Animate():
         self.index_actual=0
         self.time=0
 
-    # sevenlives/assets/entity/{entity.name}/{idle/run/burn}/{0/1/2}.png 
-
     def get_assets_folder(self, anim=None):
         return getAssetFolder("entity", self.entity.name, anim)
 
@@ -31,7 +29,13 @@ class Animate():
 
     def draw(self, surface):
         '''Dessine l'image de l'entité'''
-        surface.blit(self.dico_status[self.status_actual][self.index_actual], self.entity.give_component(Transform).location())
+        copy=self.dico_status[self.status_actual][self.index_actual]
+        if self.entity.give_component(Transform).x_direction<0:
+            surface.blit(copy, self.entity.give_component(Transform).location())
+        if self.entity.give_component(Transform).x_direction>0:
+            surface.blit(pygame.transform.flip(copy, True, False), self.entity.give_component(Transform).location())
+        else :
+            surface.blit(self.dico_status[self.status_actual][0], self.entity.give_component(Transform).location())
 
     def change_status(self, status="idle"):
         '''Une méthode pour changer de status (Via un attribut : status actuel ? + Remettre l'index image à 0)'''
@@ -47,6 +51,6 @@ class Animate():
 
     def update(self, dt):
         self.time+=dt
-        if self.time>1/4:
+        if self.time>4:
             self.next_image()
             self.time=0

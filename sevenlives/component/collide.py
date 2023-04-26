@@ -11,5 +11,5 @@ class Collide():
     def set_entity(self, entity):
         self.entity=entity
 
-    def collide(self, entity1, entity2):
-        return entity1.rect.colliderect(entity2.rect)
+    def collide(self, box: pygame.Rect) -> bool:
+        return self.entity.rect.colliderect(box)

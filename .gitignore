@@ -1,5 +1,5 @@
 .vscode
+.spyproject/
 __pycache__
 Test
 sevenlives/*/__main__.py
-.spyproject

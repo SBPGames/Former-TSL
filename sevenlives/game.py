@@ -33,11 +33,12 @@ class TheSevenLives:
 
                 Mouse.update()
                 if self._level != None:
-                    self._level.update(self._clock.tick())
+                    self._level.update(self._clock.get_time()/1000)
                     self._level.draw(screen)
 
                 self._surface.blit(pygame.transform.scale(screen, self._surface.get_rect().size), screen.get_rect())
                 pygame.display.flip()
+                self._clock.tick(60)
                 continue
 
             break

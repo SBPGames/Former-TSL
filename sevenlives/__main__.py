@@ -1,6 +1,7 @@
 import sys, getopt
 from sevenlives.game import TheSevenLives
 from sevenlives.mode import Mode
+from sevenlives.level import MainLevel
 
 mode = Mode.PRODUCTION
 
@@ -22,4 +23,6 @@ except getopt.GetoptError as e:
 
 print(f"Launching game in {str(mode.getId()).capitalize()} mode...")
 
-TheSevenLives(mode).run()
+tsl = TheSevenLives(mode)
+tsl.setLevel(MainLevel())
+tsl.run()

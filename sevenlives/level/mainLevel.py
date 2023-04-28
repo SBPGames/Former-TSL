@@ -13,7 +13,10 @@ class MainLevel:
         ]
 
         space = pygame.Vector2(0, 20)
-        origin = pygame.Vector2(ScrW()*2/3, ScrH()/2 - self._buttons[0]._rect.h)
+        origin = pygame.Vector2(
+            self._getInternalSurface().get_width()*2/3,
+            self._getInternalSurface().get_height()/2 - self._buttons[0]._rect.h
+        )
 
         # Logo
         self._logo = pygame.image.load(os.path.join(self.__parent.getPath(), "logo.png"))
@@ -31,7 +34,10 @@ class MainLevel:
             True,
             pygame.Color(235, 235, 235)
         )
-        self._cdtRect = self._cdtText.get_rect(bottomleft = pygame.Vector2(10, ScrH() - 10))
+        self._cdtRect = self._cdtText.get_rect(bottomleft = pygame.Vector2(
+            10,
+            self._getInternalSurface().get_height() - 10
+        ))
 
     # GETTERS
     def _getInternalSurface(self) -> pygame.Surface:

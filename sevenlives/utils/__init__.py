@@ -9,7 +9,7 @@ import os, pygame
 PROJECT_ROOT = "sevenlives"
 PROJECT_ASSETS_FOLDER = "assets"
 
-def getAssetFolder(subpackage: str, *path: tuple[str]):
+def getAssetFolder(subpackage: str, *path: tuple):
     assert any(
         [subpackage == d for d in filter(lambda f: f != "__pycache__", os.listdir(PROJECT_ROOT))]
     ), "You have to give a real subpackage name."

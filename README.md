@@ -23,8 +23,9 @@ Soon.
 
 ## Setup
 ### Installation
-Take from the chose release the `sevenlives` folder and put it anywhere you want or, if you will use it as a library,
-somewhere from your project's root.
+Take, from the chosen release or the downloaded code, the `sevenlives` folder and put it anywhere you want or, if you
+will use it as a library, somewhere from your project's root.  
+Also, don't forget to install the `pygame` package with pip.
 ### Using
 To only launch the project or your modified version, use the following command from one directory upper of the project's
 root :

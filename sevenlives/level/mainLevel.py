@@ -33,22 +33,30 @@ class MainLevel:
         )
         self._cdtRect = self._cdtText.get_rect(bottomleft = pygame.Vector2(10, ScrH() - 10))
 
+    # GETTERS
+    def _getInternalSurface(self) -> pygame.Surface:
+        return self.__parent._getInternalSurface()
+
+    # FUNCTIONS
     def update(self, deltatime):
         self.__parent.update(deltatime)
 
         for button in self._buttons:
             button.update()
 
-    def draw(self, surface: pygame.Surface):
-        self.__parent.draw(surface)
+    def _drawInternally(self, visibleRect: pygame.Rect):
+        self.__parent._drawInternally(visibleRect)
 
         for button in self._buttons:
-            button.draw(surface)
+            button.draw(self._getInternalSurface())
 
-        surface.blit(self._logo, self._logoRect)
-        surface.blit(self._cdtText, self._cdtRect)
+        self._getInternalSurface().blit(self._logo, self._logoRect)
+        self._getInternalSurface().blit(self._cdtText, self._cdtRect)
+    def draw(self, surface: pygame.Surface):
+        self._drawInternally(surface.get_rect(topleft=self.__parent._position))
+        self.__parent.draw(surface, False)
 
-    # Buttons actions
+    # BUTTONS FUNCTIONS
     def startClicked(self):
         pass
     def continueClicked(self):

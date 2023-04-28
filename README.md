@@ -25,13 +25,14 @@ Soon.
 ### Installation
 Take, from the chosen release or the downloaded code, the `sevenlives` folder and put it anywhere you want or, if you
 will use it as a library, somewhere from your project's root.  
-Also, don't forget to install the `pygame` package with pip.
+Also, don't forget to install the `pygame` package v2.3.0+ with pip.
 ### Using
 To only launch the project or your modified version, use the following command from one directory upper of the project's
 root :
 ```powershell
-python -m sevenlives
+python -m sevenlives [-d] [--mode prod|roduction|dev|developement]
 ```  
+Note: the `-d` flag is similar to `--mode dev` or `--mode developement`. Also, the `developement` mode is just a windowed mode for now but will soon be used to get a better version for development.  
 However, to use it as a library : import it correcly, create an instance of the Game class and run its method `run()`.
 
 ## License

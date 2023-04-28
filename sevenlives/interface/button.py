@@ -3,7 +3,7 @@ Buttons's image asset is "0.png" in "assets/interface/button/{button._id}".
 """
 import os, pygame
 from typing import Callable
-from sevenlives.utils import getAssetFolder
+from sevenlives.utils import ScrW, ScrH, getAssetFolder
 from sevenlives.interface import Mouse
 from sevenlives.interface.status import UIStatus
 
@@ -55,11 +55,12 @@ class Button:
 
     def update(self):
         self._surface.set_alpha(255)
+        rect = pygame.Rect(ScrW()*self._rect.x/640, ScrH()*self._rect.y/360, ScrW()*self._rect.w/360, ScrH()*self._rect.h/360)
 
-        if self._rect.collidepoint(*Mouse.getPos()):
+        if rect.collidepoint(*Mouse.getPos()):
             self._surface.set_alpha(127)
 
-            if Mouse.isReleased() and self._rect.collidepoint(*Mouse.getPressedPos()):
+            if Mouse.isReleased() and rect.collidepoint(*Mouse.getPressedPos()):
                 self._callback()
                 self._clickSound.play()
 

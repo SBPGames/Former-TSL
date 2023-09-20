@@ -1,4 +1,5 @@
-![Project logo](Content/Logo/TheSevenLives_Large_logo.png?raw=true)
+![Project logo](Content/Logo/TheSevenLives_Large_logo.png?raw=true)  
+**This project is now archived. This repo is the former one of the "The Seven Lives" video game. The project is now taken over by a new team and moved in [this organization](https://github.com/TheSevenLives).**
 # The Seven Lives [![License: GPL v3](https://img.shields.io/badge/License-GPL_v3-orange.svg)](COPYING)
 The Seven Lives is a platformer indie video game created by the FLAM group of 2022-2023 twelfth grade NSI students from
 Marcel Dassault high school that’s participating to the NSI Trophy. The game involves in diving into the child’s dreams
